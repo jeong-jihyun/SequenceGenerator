@@ -1,4 +1,4 @@
-package com.apress.springrecipes.sequence;
+package com.apress.springrecipes.sequence.Entity;
 
 import lombok.Setter;
 
