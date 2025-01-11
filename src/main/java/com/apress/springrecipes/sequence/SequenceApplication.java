@@ -1,8 +1,10 @@
 package com.apress.springrecipes.sequence;
 
+import com.apress.springrecipes.sequence.Entity.Product;
 import com.apress.springrecipes.sequence.Entity.SequenceGenerator;
 import com.apress.springrecipes.sequence.config.SequenceGeneratorConfiguration;
 
+import com.apress.springrecipes.sequence.config.ShopConfiguration;
 import com.apress.springrecipes.sequence.dao.SequenceDao;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
@@ -46,6 +48,13 @@ public class SequenceApplication {
 
         log.info("Sequence: {}", sequenceDao.getNextValue("IT"));
         log.info("Sequence: {}", sequenceDao.getNextValue("IT"));
+
+        ApplicationContext context3 = new AnnotationConfigApplicationContext(ShopConfiguration.class);
+        Product aaa = context3.getBean("aaa", Product.class);
+        Product cdrom = context3.getBean("cdrw", Product.class);
+
+        log.info("aaa :{}", aaa);
+        log.info("cdrw :{}", cdrom);
 
         SpringApplication.run(SequenceApplication.class, args);
     }
