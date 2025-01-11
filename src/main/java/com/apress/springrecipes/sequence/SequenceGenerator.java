@@ -1,10 +1,15 @@
 package com.apress.springrecipes.sequence;
 
+import lombok.Setter;
+
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class SequenceGenerator {
+    @Setter
     private String prefix;
+    @Setter
     private String suffix;
+    @Setter
     private int initial;
     private final AtomicInteger counter = new AtomicInteger();
 
@@ -12,21 +17,7 @@ public class SequenceGenerator {
 
     }
 
-    public void setPrefix(String prefix) {
-        this.prefix = prefix;
-    }
-
-    public void setSuffix(String suffix) {
-        this.suffix = suffix;
-    }
-
-    public void setInitial(int initial) {
-        this.initial = initial;
-    }
-
     public synchronized String getSequence() {
-        StringBuffer buffer = new StringBuffer();
-        buffer.append(prefix).append(initial).append(counter.getAndIncrement()).append(suffix);
-        return buffer.toString();
+        return prefix + initial + counter.getAndIncrement() + suffix;
     }
 }
