@@ -6,6 +6,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class SequenceGenerator {
     @Setter
+    private PrefixGenerator prefixGenerator;
+    @Setter
     private String prefix;
     @Setter
     private String suffix;
@@ -20,4 +22,5 @@ public class SequenceGenerator {
     public synchronized String getSequence() {
         return prefix + initial + counter.getAndIncrement() + suffix;
     }
+
 }
